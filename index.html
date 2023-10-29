@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <title>Oct 29</title>
+    <style>
+        #qrcode-2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding-top: 2cm;
+        }
+
+        #redline {
+            background-color: red;
+            height: 150px;
+            text-align: left;
+            margin-bottom: auto;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding-left: 20px;
+            font-size:xx-large;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="redline">
+        <i class='fa fa-arrow-left'></i>&nbsp&nbspמסך ראשי
+    </div>
+<div id="qrcode-2"></div>
+
+<script type="text/javascript">
+
+function generateRandomString(length) {
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let randomString = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        randomString += characters.charAt(randomIndex);
+    }
+    return randomString;
+}
+
+var qrcode = new QRCode(document.getElementById("qrcode-2"), {
+    text: generateRandomString(12),
+	width: 512,
+	height: 512,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+    setTimeout(function () {
+        window.location.reload(1);
+    }, 2000);
+</script>
+
+</body>
+</html>
