@@ -52,6 +52,8 @@ function generateRandomString(length) {
     let lenParam = new URLSearchParams(document.location.search);
     let lenParamRes = lenParam.get("len");
     let refreshParamRes = lenParam.get("refresh");
+    let widthParamRes = lenParam.get("width");
+    let heightParamRes = lenParam.get("height");
 
     if (lenParamRes == null)
         {
@@ -61,14 +63,19 @@ function generateRandomString(length) {
         refreshParamRes = 2000
     }
 
+    if (widthParamRes == null || heightParamRes == null) {
+        heightParamRes = 512
+        widthParamRes = 512
+    }
+
     console.log("len: ", lenParamRes)
     console.log("refresh: ", refreshParamRes)
 
 
     var qrcode = new QRCode(document.getElementById("qrcode-2"), {
         text: generateRandomString(lenParamRes),
-	    width: 512,
-	    height: 512,
+        width: widthParamRes,
+        height: heightParamRes,
 	    colorDark : "#000000",
 	    colorLight : "#ffffff",
 	    correctLevel : QRCode.CorrectLevel.H
