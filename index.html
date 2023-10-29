@@ -49,20 +49,34 @@ function generateRandomString(length) {
 }
 
 
-    lengthParam = URLSearchParams.getAll("size")
-    console.log("lengthParam:", lengthParam)
-var qrcode = new QRCode(document.getElementById("qrcode-2"), {
-    text: generateRandomString(lengthParam),
-	width: 512,
-	height: 512,
-	colorDark : "#000000",
-	colorLight : "#ffffff",
-	correctLevel : QRCode.CorrectLevel.H
-});
+    let lenParam = new URLSearchParams(document.location.search);
+    let lenParamRes = lenParam.get("len");
+    let refreshParamRes = lenParam.get("refresh");
+
+    if (lenParamRes == null)
+        {
+        lenParamRes = 12
+    }
+    if (refreshParamRes == null) {
+        refreshParamRes = 2000
+    }
+
+    console.log("len: ", lenParamRes)
+    console.log("refresh: ", refreshParamRes)
+
+
+    var qrcode = new QRCode(document.getElementById("qrcode-2"), {
+        text: generateRandomString(lenParamRes),
+	    width: 512,
+	    height: 512,
+	    colorDark : "#000000",
+	    colorLight : "#ffffff",
+	    correctLevel : QRCode.CorrectLevel.H
+    });
 
     setTimeout(function () {
         window.location.reload(1);
-    }, 2000);
+    }, lenParamRes);
 </script>
 
 </body>
