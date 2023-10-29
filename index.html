@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -48,8 +48,11 @@ function generateRandomString(length) {
     return randomString;
 }
 
+
+    lengthParam = URLSearchParams.getAll("size")
+    console.log("lengthParam:", lengthParam)
 var qrcode = new QRCode(document.getElementById("qrcode-2"), {
-    text: generateRandomString(12),
+    text: generateRandomString(lengthParam),
 	width: 512,
 	height: 512,
 	colorDark : "#000000",
